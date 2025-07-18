@@ -44,7 +44,7 @@ function OrderData() {
     try {
       const res = await axios.get("http://localhost:3000/products/getAllProducts");
       const map: Record<string, string> = {};
-      res.data.forEach((p: any) => {
+      (res.data as any[]).forEach((p: any) => {
         map[p._id] = p.name;
       });
       setProductMap(map);
@@ -95,7 +95,7 @@ function OrderData() {
     setSelectedOrder(null);
   };
 
-  const guardarCambios = async (updatedOrder: any) => {
+  const guardarCambios = async (updatedOrder: Order) => {
     try {
       const { _id, products } = updatedOrder;
       if (!products || products.length === 0) {
@@ -117,7 +117,7 @@ function OrderData() {
     }
   };
 
-  const crearOrden = async (newOrder: any) => {
+  const crearOrden = async (newOrder: Order) => {
     try {
       const { products } = newOrder;
       const user = JSON.parse(localStorage.getItem("user") || "{}");
@@ -181,7 +181,7 @@ function OrderData() {
     {
       title: "Acciones",
       key: "actions",
-      render: (_: any, record: Order) => (
+      render: (_: unknown, record: Order) => (
         <div>
           <Tag
             onClick={() => handleEdit(record)}

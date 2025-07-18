@@ -1,4 +1,4 @@
-import DashBoard from "../modules/dashboard/dashboard";
+import DashBoard from "../modules/dashboard/DashBoard";
 import Dashboard from "../modules/dashboard/MenuSideBar";
 import OrderData from "../modules/order/OrderData";
 import ProductData from "../modules/products/ProductData";
